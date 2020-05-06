@@ -13,6 +13,10 @@ class ProductService
     {
         $this->product = $product;
     }
+    public function getAll()
+    {
+        return Product::all();
+    }
     public function addproduct(Request $request)
     {
         $product = new Product();

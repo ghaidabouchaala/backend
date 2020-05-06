@@ -17,7 +17,7 @@ class ProductController extends Controller
     public function addProduct(Request $request)
     {
         if(!$request->has('label','description','quantity','price','photo') ){
-            return response()->json(['message'=>'missing field']);
+            return response()->json(['message'=>'missing field'],400);
         }
         $request->validate([
            'label'=>'required|string',
@@ -27,9 +27,13 @@ class ProductController extends Controller
         ]);
         if($this->productService->getproductLabel($request->input('label')))
         {
-            return response()->json(['message'=>'label already exists']);
+            return response()->json(['message'=>'label already exists'],400);
         }
         $product= $this->productService->addproduct($request);
         return response()->json($product);
+    }
+    public function getAllProducts()
+    {
+        return $this->productService->getAll();
     }
 }

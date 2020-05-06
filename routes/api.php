@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::post('products/add','ProductController@addProduct');
+Route::get('products/all','ProductController@getAllProducts');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
