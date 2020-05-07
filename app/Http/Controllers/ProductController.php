@@ -36,4 +36,8 @@ class ProductController extends Controller
     {
         return $this->productService->getAll();
     }
+    public function deleteProductById($product_id)
+    {
+        return $this->productService->deleteProduct($product_id);
+    }
 }

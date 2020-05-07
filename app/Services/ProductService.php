@@ -33,4 +33,8 @@ class ProductService
         return Product::where('label','=',$label)
             ->first();
     }
+    public function deleteProduct($id)
+    {
+        return Product::where('product_id','=',$id)->delete();
+    }
 }
