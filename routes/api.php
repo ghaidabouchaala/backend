@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::post('products/add','ProductController@addProduct');
 Route::get('products/all','ProductController@getAllProducts');
 Route::delete('products/delete/{id}','ProductController@deleteProductById');
+
+
+Route::get('users/all','UserController@getAllUsers');
+Route::delete('users/delete/{id}','UserController@deleteUserById');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
