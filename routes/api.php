@@ -21,6 +21,9 @@ Route::delete('products/delete/{id}','ProductController@deleteProductById');
 Route::get('users/all','UserController@getAllUsers');
 Route::delete('users/delete/{id}','UserController@deleteUserById');
 
+Route::post('register','UserController@register');
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

@@ -21,4 +21,9 @@ class UserController extends Controller
          $this->userService->deleteUser($id);
          return response() ->json(['message'=>'user deleted'],200);
     }
+    public function register(Request $request)
+    {
+        $response =  $this->userService->registerUser($request);
+        return response() ->json($response);
+    }
 }
