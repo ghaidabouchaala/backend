@@ -17,6 +17,10 @@ Route::post('products/add','ProductController@addProduct');
 Route::get('products/all','ProductController@getAllProducts');
 Route::delete('products/delete/{id}','ProductController@deleteProductById');
 
+Route::get('products/{product_id}','ProductController@getProductById');
+
+Route::post('buy/{product_id}', 'OrderController@buy');
+Route::get('test', 'UserController@test');
 
 Route::get('users/all','UserController@getAllUsers');
 Route::delete('users/delete/{id}','UserController@deleteUserById');

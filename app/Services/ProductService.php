@@ -17,9 +17,9 @@ class ProductService
     {
         return Product::all();
     }
-    public function addproduct(Request $request)
+    public function addproduct(Request $request, $product)
     {
-        $product = new Product();
+
         $product->label = $request['label'];
         $product->description = $request['description'];
         $product->quantity = $request['quantity'];
@@ -36,5 +36,20 @@ class ProductService
     public function deleteProduct($id)
     {
         return Product::where('product_id','=',$id)->delete();
+    }
+
+    public function getProductById($product_id){
+        return Product::where('product_id','=',$product_id)->first();
+    }
+    public function updateQuantity($product_id,$quantity){
+       $product = Product::where('product_id', '=', $product_id)->first();
+        if($quantity > $product->quantity)
+        {
+            return false;
+        }else {
+            $product->quantity = $product->quantity - $quantity;
+            $product->update();
+            return true;
+        }
     }
 }

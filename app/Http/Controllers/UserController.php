@@ -38,4 +38,12 @@ class UserController extends Controller
 
         return response() ->json($response,200);
     }
+    public function test()
+    {
+        if(!$user = $this->userService->retrieveUserFromToken())
+        {
+            return response() ->json(['msg'=>' bad request'],400);
+        }
+        return  response()-> json($user,200);
+    }
 }
